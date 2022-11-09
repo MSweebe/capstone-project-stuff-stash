@@ -53,32 +53,33 @@ mongoose.connect(
 //  res.send({msg:'hello world'})
 //})
 
-app.post("/api/v1/users/adduserOrg", (req, res) => {
-  const { orgname, orgid, userid } = req.body;
+app.post("/api/v1/users/adduserOrg",(req,res)=>{
+  const {orgname,orgid,userid} = req.body;    
 
-  if (!orgname || !orgid) {
-    return res.status(400).json({ msg: "Please enter all the fields" });
-  }
-  OrgModel.findOne({ name: orgname }).then((org) => {
-    if (!org)
-      return res.status(400).json({ msg: "Organization name does not exist" });
 
-    bcrypt.compare(orgid, org.OrgAccessCode).then((isMatch) => {
-      if (!isMatch) return res.status(400).json({ msg: "Invalid access code" });
+    if(!orgname||!orgid){
+        return res.status(400).json({msg:"Please enter all the fields"});
+    }
+    OrgModel.findOne({name:orgname}).then((org) => {
+    if (!org) return res.status(400).json({ msg: "Organization name does not exist" });
 
-      UserModel.findOneAndUpdate(
-        { username: userid },
-        { $set: { organizationID: orgid } },
-        { upsert: true }
-      ).then((result) => {
-        if (result)
-          return res.status(200).json({ msg: "User added successfully", org });
-        else {
-          return res.status(400).json({ msg: "Something went wrong" });
-        }
-      });
-    });
-  });
+    bcrypt.compare(orgid,org.OrgAccessCode).then((isMatch)=>{
+        if(!isMatch) return res.status(400).json({msg:"Invalid access code"});
+
+
+       const finduser=UserModel.findOne({username:userid});
+        finduser.findOne({$and:[{"organizationID.name":orgname},{"organizationID.Accesscode":orgid}]}).then((msg)=>{
+        if(msg) return res.status(400).json({ msg: "User alreadys exists under the Organization" });
+        else{
+            const a={"name":orgname,"Accesscode":orgid} ; 
+            UserModel.findOneAndUpdate({username:userid},{$push:{organizationID:[a]}},{upsert:true}).then((result)=>{
+            if(result) return res.status(200).json({msg:"User added successfully",org});
+           })
+           }
+
+        })       
+    })  
+   })
 });
 
 // app.post("/api/v1/users/createUser", async (req, res) => {
@@ -112,7 +113,7 @@ app.post("/api/v1/users/createUser", (req, res) => {
     const newUser = new UserModel({
       username,
       password,
-      organizationID,
+      organizationID: []
     });
 
     // encrypts the password with hashing
@@ -253,17 +254,33 @@ app.post("/api/v1/orgs/RenameOrgization", (req, res) => {
   });
 });
 
-app.post("/api/v1/users/viewstock", (req, res) => {
-  const { orgid } = req.body;
-  StockroomModel.find({ org: orgid }).then(function (err, result) {
-    if (err) {
-      console.log("error");
-      throw err;
-      //throw err;
+app.get("/api/v1/users/viewstock/:orgName", (req, res) => {
+  const orgName = req.params.orgName;
+
+  StockroomModel.find({ org: orgName }, { name: 1, _id: 0 }).then((result) => {
+    if (result == "")
+      return res.status(400).json({
+        msg: "Sorry,We did not find any stockrooms under this organization",
+      });
+    else {
+      return res.json(result);
     }
   });
-  res.status(200).json({ msg: "why wont you work" });
 });
+
+// if(err) return res.status(400).json({msg:"Sorry,We did not find any stockrooms under this organization"})
+// else return res.json(result);
+// app.post("/api/v1/users/viewstock", (req, res) => {
+//   const { orgid } = req.body;
+//   StockroomModel.find({ org: orgid }).then(function (err, result) {
+//     if (err) {
+//       console.log("error");
+//       throw err;
+//       //throw err;
+//     }
+//   });
+//   res.status(200).json({ msg: "why wont you work" });
+// });
 
 
 app.get("/api/v1/orgs/OrgView/:userid", (req, res) => {
