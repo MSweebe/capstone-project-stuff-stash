@@ -8,7 +8,7 @@ import Axios from "axios";
 
 
 const StockRoomViewDashboard = () => {
-  const [listOfStockRoom, setListOfStockRoom] = useState({});
+  const [listOfStockRoom, setListOfStockRoom] = useState([]);
   //const [orgName, setOrgName] = useState({});
   const [error, setError] = useState();
   let history = useHistory();
@@ -22,7 +22,7 @@ const StockRoomViewDashboard = () => {
   };
 
   useEffect(() => {
-    Axios.get(`http://localhost:3000/api/v1/users/viewstock/${orgName}`)
+    Axios.get(`https://stuffstash-a8fm9.ondigitalocean.app/api/v1/users/viewstock/${orgName}`)
       .then((response) => {
         //console.log("RESPONSE: ", response.data);
         //console.log("OBJ MAP:", Object.entries(response.data)); // => [ ["0", {name}], ["1", {name}], ["2", {name}] ]
@@ -37,16 +37,16 @@ const StockRoomViewDashboard = () => {
     <React.Fragment>
       {Object.entries(listOfStockRoom).map(([key, value]) => {
         //FOR DEBUG
-        // console.log("key: ", key);
-        // console.log("value: ", value);
+        //console.log("key: ", key);
+        //console.log("value: ", value);
         return (
           <li className="list-group-item bg-transparent" key={value.name}>
             {Object.entries(value).map((name, key) => {
               //console.log("el", name);
               return (
-                <div className="container-fluid buttonItem shadowbtn" key={name}>
+                <div className="container-fluid buttonItem shadowbtn" key={name[1]}>
                   <button className="toggle-btn" data-active="inactive">
-                    <span className="btnLabel">{name}</span>
+                    <span className="btnLabel">{name[1]}</span>
                   </button>
                 </div>
               );
