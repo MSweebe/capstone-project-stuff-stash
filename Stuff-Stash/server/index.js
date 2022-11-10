@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const { body, validationResult } = require("express-validator");
 const app = express();
 const mongoose = require("mongoose");
@@ -21,6 +22,8 @@ const { check } = require("express-validator");
 mongoose.connect(
   "mongodb+srv://estefan:teamwork@cluster0.qf1w4nh.mongodb.net/TechStartUp?retryWrites=true&w=majority"
 );
+
+app.use(express.static('static'));
 
 //app.get("/api/v1/users/", (req, res) => {
 // UserModel.find({}, (err, result) => {
@@ -305,6 +308,10 @@ app.get("/api/v1/orgs/OrgView/:userid", (req, res) => {
 app.use("/api/v1/orgs/", orgs);
 
 app.use("/api/v1/users", users);
+
+app.get('*' , (req, res) => {
+	res.sendFile(path.join(__dirname, 'static/index.html'));
+})
 
 app.listen(PORT, () => {
   console.log("SERVER LISTENING ON PORT ", PORT);

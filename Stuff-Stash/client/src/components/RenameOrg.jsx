@@ -19,7 +19,7 @@ const RenameOrgPage = () => {
 
    // const res = await fetch('https://api-dot-techstack-demo-deployment.ue.r.appspot.com/api/v1/users/RenameOrgization', {
      const res = await fetch(
-       'https://stuffstash-a8fm9.ondigitalocean.app/api/v1/orgs/RenameOrgization',
+       '/api/v1/orgs/RenameOrgization',
       {
         method: "POST",
         headers: {

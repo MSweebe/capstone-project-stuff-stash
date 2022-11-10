@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6a0d0ad0.css",
+    "main.js": "/static/js/main.58e92ea5.js",
+    "static/media/sour_patch.jpg": "/static/media/sour_patch.fc2c088d19aa2dc057ca.jpg",
+    "index.html": "/index.html",
+    "main.6a0d0ad0.css.map": "/static/css/main.6a0d0ad0.css.map",
+    "main.58e92ea5.js.map": "/static/js/main.58e92ea5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6a0d0ad0.css",
+    "static/js/main.58e92ea5.js"
+  ]
+}
