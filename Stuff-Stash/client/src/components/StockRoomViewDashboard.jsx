@@ -136,9 +136,22 @@ const StockRoomViewDashboard = ({ orgName }) => {
 
       console.log("result is: ", JSON.stringify(result, null, 4));
     } catch (err) {
-    } finally {
-      window.location.reload();
-    }
+    } 
+    Axios.get(
+      `http://localhost:3000/api/v1/users/viewAssets/${orgName}/${stockroomName}`
+    ) .then((response) => {
+        setListOfAssets(response.data);
+        // This may look delayed by one click but don't worry it is receiving the correct assets
+        //console.log(listOfAssets);
+      })
+      .catch((err) => {
+        setError(err);
+      });
+    
+    
+    //finally {
+     // window.location.reload();
+    //}
   };
 
   return (

@@ -99,7 +99,7 @@ class Dashboard extends Component {
             <div className="container-fluid rightDisplay col">
               <div className="stckRoomDisplay justify-content-center">
                 <span className="display-3">
-                  Current Stockrooms In {this.state.org}
+                  Current Stockrooms {this.state.org}
                 </span>
                 {/** Div for displaying stockrooms of org when org button or link is clicked*/}
                 <ul className="stockroom-list list-group list-group-flush">
