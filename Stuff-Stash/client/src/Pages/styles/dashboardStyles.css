@@ -1,28 +1,57 @@
-.back {
-  /* background-color: blueviolet; */
-  min-height: 90vh;
+.back-ground {
+  min-height: 100vh;
   height: 100%;
   margin: 0;
   display: flex;
-  z-index: 0;
+}
+.white{
+  color: white;
 }
 
 .leftDisplay {
+  padding: .5em;
+}
+
+.rightDisplay {
   padding: 1em;
+  overflow: none;
 }
 
 .stckRoomDisplay {
-  /* background-color: beige; */
   max-height: 80vh;
-  margin: 2em;
+  margin: 1em;
   padding: 1em;
+  padding-left: 0;
+  margin-left: 0;
   overflow: auto;
+  color: white;
+}
+.orgMembersDisplay {
+  max-height: 80vh;
+  width: 200px;
+}
+
+.assetDisplay {
+  resize: vertical;
+  overflow: auto;
+  max-height: 100vh;
+  display: flexbox;
+  padding: 0.5em;
+  overflow-y: auto;
+}
+
+#AssetList {
+  overflow: auto;
+  max-height: 450px;
+  width: 1125px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .stockroom-list {
-    max-width: 600px;
-    text-align: start;
-    /* margin-left: 25%; */
+  max-width: 600px;
+  text-align: start;
+  color: white;
 }
 
 .userDisplay {
@@ -30,7 +59,7 @@
   width: 300px;
   height: 250px;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
   border-radius: 10px;
 }
 
@@ -39,12 +68,7 @@
   max-height: 50vh;
   border-radius: 10px;
   overflow: auto;
-  margin-top: 1rem;
 }
-
-/* .shadow {
-  box-shadow: 0px 5px 10px 0px rgb(56, 56, 56);
-} */
 
 .outerOrg {
   background-color: transparent;
@@ -59,11 +83,27 @@
   background-color: gray;
   border-radius: 100px;
 }
-/* .buttonItem span {
-    text-align: center;
-    position: relative;
-    top: 20%;
-  } */
+.btn-color{
+  background-color: rgb(57, 59, 59);
+  border-color: rgb(57, 59, 59);
+}
+
+.createButton, .deleteButton {
+  margin: 5px;
+  margin-top: 10px;
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 99px;
+  border: none;
+}
+
+.createButton:hover, .deleteButton:hover{
+  background: rgb(85, 87, 87);
+  color: white;
+  animation: smoothScale 0.15s ease-in forwards;
+}
+
 .buttonItem button.toggle-btn {
   color: white;
   background-color: transparent;
@@ -74,7 +114,7 @@
 
 .buttonItem:hover {
   background-color: rgb(75, 75, 75);
-  box-shadow: 0px 5px 7px 0px rgb(119, 119, 119);
+  box-shadow: 0px 5px 7px 0px rgb(32, 32, 32);
   animation: smoothScale 0.15s ease-in forwards;
 }
 
@@ -86,6 +126,23 @@
 
 .button:hover {
   animation: smoothScale 0.15s ease-in forwards;
+}
+
+.userDiv {
+  display: flex;
+  color: rgb(172, 82, 236);
+}
+.userDiv p {
+  color: rgb(255, 255, 255);
+  font-size: 42px;
+  text-align: center;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.imgDiv {
+  width: 75px;
+  height: 150px;
 }
 
 @keyframes smoothScale {
@@ -104,21 +161,4 @@
   100% {
     transform: scale(0.98);
   }
-}
-
-.userDiv {
-  display: flex;
-  color: rgb(172, 82, 236);
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-}
-.userDiv p {
-  color: rgb(255, 255, 255);
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 45px;
-  text-align: center;
-}
-
-.imgDiv {
-  width: 75px;
-  height: 150px;
 }
