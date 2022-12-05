@@ -80,11 +80,6 @@ class Dashboard extends Component {
                     Create Stockroom
                   </Link>
                 </div>
-                <div className="btn btn-success m-1 button button1 btn-color ">
-                  <Link to="/addAssetForm" exact style={linkStyle}>
-                    Create Asset
-                  </Link>
-                </div>
                 <div
                   className="btn btn-success m-1 button button1 btn-color"
                   onClick={logoutUser}
@@ -99,7 +94,7 @@ class Dashboard extends Component {
             <div className="container-fluid rightDisplay col">
               <div className="stckRoomDisplay justify-content-center">
                 <span className="display-3">
-                  Current Stockrooms {this.state.org}
+                  Current Stockrooms for {this.state.org}
                 </span>
                 {/** Div for displaying stockrooms of org when org button or link is clicked*/}
                 <ul className="stockroom-list list-group list-group-flush">

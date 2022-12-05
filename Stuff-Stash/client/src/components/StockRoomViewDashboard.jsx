@@ -169,7 +169,7 @@ const StockRoomViewDashboard = ({ orgName }) => {
           <li className="list-group-item bg-transparent" key={value.name}>
             {Object.entries(value).map((name, key) => {
               return (
-                <div>
+                <div className="create-delete-container">
                   <div
                     className="container-fluid buttonItem shadowbtn"
                     key={name[1]}
@@ -184,7 +184,7 @@ const StockRoomViewDashboard = ({ orgName }) => {
                     </button>
                   </div>
                   <button
-                    class="createButton"
+                    className="createButton"
                     id={name[1] + "create"}
                     onClick={handleClick}
                     type="hidden"
@@ -195,7 +195,7 @@ const StockRoomViewDashboard = ({ orgName }) => {
 
                   <button
                     id={"delete" + name[1]}
-                    class="deleteButton"
+                    className="deleteButton"
                     onClick={deleteStockroom}
                     type="hidden"
                     hidden={true}
