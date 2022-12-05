@@ -28,12 +28,16 @@ const StockRoomViewDashboard = ({ orgName }) => {
       .then((response) => {
         setListOfStockRoom(response.data);
         setError(null);
+        
       })
       .catch((err) => {
         setListOfStockRoom("");
         setError(err.response.data.msg);
+        
       });
-  }, [orgName]);
+    
+      
+  }, [orgName,listOfStockRoom]);
 
   const viewStuff = (event) => {
     setOrg(orgName);
@@ -102,9 +106,12 @@ const StockRoomViewDashboard = ({ orgName }) => {
 
       console.log("result is: ", JSON.stringify(result, null, 4));
     } catch (err) {
-    } finally {
-      window.location.reload();
     }
+  
+    setListOfAssets("");
+    // finally {
+     // window.location.reload();
+    //}
   };
 
   const handleClick = async (event) => {

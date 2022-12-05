@@ -40,8 +40,10 @@ const Assetcard = (props) => {
 
     console.log("result is: ", JSON.stringify(result, null, 4));
   } catch (err) {
-  } finally {
-    window.location.reload();
+  } 
+  
+  finally {
+   window.location.reload();
   }
   };
 
