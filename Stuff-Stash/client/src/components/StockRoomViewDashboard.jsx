@@ -217,7 +217,7 @@ const StockRoomViewDashboard = ({ orgName }) => {
               {Object.entries(value.assets).map((name, key) => {
                 return (
                   <div>
-                    {console.log(name[1])}
+                    {/* {console.log(name[1])} */}
                     <Assetcard
                       name={name[1].identifier}
                       avail={name[1].isAvailable}

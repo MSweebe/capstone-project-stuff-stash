@@ -64,7 +64,7 @@ const Assetcard = (props) => {
             <div className="img-container">
               <img
                 src="https://media.istockphoto.com/id/1165294902/vector/desktop-computer-icon-flat-led-screen-monitor-pc-modern-personal-monitor-office-and-home.jpg?s=612x612&w=0&k=20&c=YtP0P84oPncvlV0JNTb2xNUWJ3lFoZwb03gsWwpLrW8="
-                alt="default-img"
+                alt="comp-icon"
                 className="product-img"
               />
               <div className="img-info ">
