@@ -37,6 +37,7 @@ const OrgViewDashboard = ({onClick}) => {
   return (
     <React.Fragment>
       {Object.entries(listOfOrgs).map(([key, value]) => {
+	{ReactSession.set("selectedOrg", value[0].name)}
         return (
           <ul className="list-group list-group-flush">
             {value.map((el) => {

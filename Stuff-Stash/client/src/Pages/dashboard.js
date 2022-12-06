@@ -33,7 +33,7 @@ const username = ReactSession.get("username");
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = { org: " " };
+    this.state = { org: ReactSession.get("selectedOrg") };
   }
   toggleOrg = (orgname) => {
     this.setState((state) => ({ org: orgname }));
