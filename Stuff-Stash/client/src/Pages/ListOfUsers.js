@@ -30,7 +30,7 @@ function Helpme() {
 
   useEffect(() => {
     //Axios.get("https://api-dot-techstack-demo-deployment.ue.r.appspot.com/api/v1/users/getUsers").then((response) => {
-    Axios.get("http://localhost:3000/api/v1/users/getUsers").then(
+    Axios.get("/api/v1/users/getUsers").then(
       (response) => {
         setListOfUsers(response.data);
       }

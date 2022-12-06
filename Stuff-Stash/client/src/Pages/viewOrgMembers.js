@@ -7,7 +7,7 @@ const viewOrgMembers = () => {
 	const DisplayStockroom = async (e) => {
 		e.preventDefault();
 		const res = await fetch(
-			"http://localhost:3000/api/v1/users/viewmembers/:orgName",
+			"/api/v1/users/viewmembers/:orgName",
 			{
 				//const res = await fetch("http://localhost:3000/api/v1/users/viewstock", {
 				method: "GET",

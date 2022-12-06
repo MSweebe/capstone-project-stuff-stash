@@ -67,7 +67,7 @@ const StockRoomViewDashboard = ({ orgName }) => {
 
     // This will get all the assets under whatever stockroom the user just clicked on
     Axios.get(
-      `http://localhost:3000/api/v1/users/viewAssets/${orgName}/${stockroomName}`
+      `/api/v1/users/viewAssets/${orgName}/${stockroomName}`
     )
       .then((response) => {
         setListOfAssets(response.data);
@@ -83,7 +83,7 @@ const StockRoomViewDashboard = ({ orgName }) => {
   const deleteStockroom = async (event) => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/deleteStockroom",
+        "/api/v1/deleteStockroom",
         {
           method: "POST",
           body: JSON.stringify({
@@ -110,12 +110,12 @@ const StockRoomViewDashboard = ({ orgName }) => {
     setListOfAssets("");
     // finally {
      // window.location.reload();
-    //}
+   //}
   };
 
   const handleClick = async (event) => {
     try {
-      const response = await fetch("http://localhost:3000/api/v1/addAsset", {
+      const response = await fetch("/api/v1/addAsset", {
         method: "POST",
         body: JSON.stringify({
           stockroomName: stockroomName,
@@ -144,7 +144,7 @@ const StockRoomViewDashboard = ({ orgName }) => {
     } catch (err) {
     } 
     Axios.get(
-      `http://localhost:3000/api/v1/users/viewAssets/${orgName}/${stockroomName}`
+      `/api/v1/users/viewAssets/${orgName}/${stockroomName}`
     ) .then((response) => {
         setListOfAssets(response.data);
         // This may look delayed by one click but don't worry it is receiving the correct assets

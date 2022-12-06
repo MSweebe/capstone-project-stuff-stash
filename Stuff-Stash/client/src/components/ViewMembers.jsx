@@ -20,7 +20,7 @@ const ViewMembers = ({orgName}) => {
 
   useEffect(() => {
     Axios.get(
-      `http://localhost:3000/api/v1/users/viewmembers/${orgName}`
+      `/api/v1/users/viewmembers/${orgName}`
     )
       .then((response) => {
         setListOfMembers(response.data);

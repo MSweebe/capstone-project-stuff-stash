@@ -19,7 +19,7 @@ const Assetcard = (props) => {
   }
   const deleteAsset = async (event) => {
    try {
-    const response = await fetch("http://localhost:3000/api/v1/deleteAsset", {
+    const response = await fetch("/api/v1/deleteAsset", {
       method: "POST",
       body: JSON.stringify({
         stockroomName:stockroom,

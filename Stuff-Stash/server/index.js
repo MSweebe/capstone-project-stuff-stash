@@ -68,7 +68,8 @@ app.post("/api/v1/users/adduserOrg", (req, res) => {
     });
   });
 });
-//**USER API**
+
+//USER API
 
 app.post("/api/v1/users/createUser", (req, res) => {
 	const { username, password, password2, organizationID } = req.body;

@@ -37,7 +37,7 @@ const UpdateForm = () => {
     // console.log("your identifer is" + oldIdentifer+"your old stockroom is " + oldIdentifer +"and your newname is"+newName);
     event.preventDefault();
     try {
-     const response =  await fetch("http://localhost:3000/api/v1/UpdateAsset", {
+     const response =  await fetch("/api/v1/UpdateAsset", {
        method: "POST",
        body: JSON.stringify({
          stockroomName:ReactSession.get("selectedStockroom"),
